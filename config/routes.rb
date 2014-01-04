@@ -1,4 +1,11 @@
 PersonalEntry::Application.routes.draw do
+  get "users/new"
+  post "users", :controller => "users", :action => "create"
+  get  "users", :controller => "users", :action => "index"
+  root :to => "users#index"
+  resources :users
+  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

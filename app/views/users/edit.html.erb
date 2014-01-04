@@ -1,0 +1,38 @@
+<%= form_for @user, :html => { :multipart => true } do |f| %>
+  <p>
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar %>
+  </p>
+  <p>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  </p>
+  <p>
+  <%= f.label :birthday %>
+  <%= f.date_select :birthday %>
+  </p>
+  <hr/>
+  <fieldset>
+    <legend>work collections</legend>
+    <%= f.fields_for :work_collections do |collection_fields| %>
+      <%= collection_fields.file_field :attachment %>
+    <% end %>
+  </fieldset>
+  <fieldset>
+    <legend>work experience</legend>
+    <%= f.fields_for :work_experiences do |experience_fields| %>
+      <p>
+      <%= experience_fields.label :start_date %>
+      <%= experience_fields.date_select :start_date, start_year: 1995, use_month_numbers: true, discard_day: true %>
+      <%= experience_fields.label :end_date %>
+      <%= experience_fields.date_select :end_date, start_year: 1996, use_month_numbers: true, discard_day: true %>
+      </p>
+      <p>
+      <%= experience_fields.label :company %>
+      <%= experience_fields.text_field :company %>
+      </p>
+    <% end %>
+  </fieldset>
+  <p><%= f.submit %><p>
+<% end %>
+<%= link_to "Back to Top", root_url %>

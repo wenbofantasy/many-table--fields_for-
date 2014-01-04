@@ -1,0 +1,25 @@
+<% @users.each do |user| %>
+  <p>
+  Email: <%= user.email %>
+  </p>
+  <p>
+  Avatar: <%= image_tag user.avatar.url %>
+  </p>
+  <div>
+  Work Collections:
+  <ul>
+    <% user.work_collections.each do |collection| %>
+      <li><%= collection.attachment.url %></li>
+    <% end %>
+  </ul>
+  </div>
+  <div>
+    Work Experiences:
+    <% user.work_experiences.each do |experience| %>
+      <p>Start Date: <%= experience.start_date.strftime("%Y-%m") %> End Date: <%= experience.end_date.strftime("%Y-%m") %></p>
+      <p>Company name: <%= experience.company %></p>
+    <% end %>
+  </div>
+  
+  <p><%= link_to "edit", edit_user_path(user) %></p>
+<% end %>

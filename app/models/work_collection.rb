@@ -1,4 +1,5 @@
 class WorkCollection < ActiveRecord::Base
+  attr_accessible :attachment
   belongs_to :user
-  # attr_accessible :title, :body
+  mount_uploader :attachment, AttachmentUploader
 end
