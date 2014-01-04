@@ -1,6 +1,11 @@
+  <p><%= link_to "Create a User", new_user_path %></p>
+
 <% @users.each do |user| %>
   <p>
   Email: <%= user.email %>
+  </p>
+  <p>
+  created_at: <%= user.created_at %>
   </p>
   <p>
   Avatar: <%= image_tag user.avatar.url %>
