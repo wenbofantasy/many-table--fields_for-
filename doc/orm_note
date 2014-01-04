@@ -1,4 +1,25 @@
 ORM: Object-relational mapping
 
+user.rb
+  has_many :work_collections
+  has_attached_file :avatar, :styles => { :medium => "150x150>" }
+users email:string birthday:date
+rails generate model user email:string birthday:date
+rails generate paperclip user avatar
 
-profile.rb
+
+work_collection.rb 
+  belongs_to :user
+  mount_uploader :attachment, AttachmentUploader
+work_collections
+rails generate model work_collection user:references
+
+rails generate uploader attachment
+rails g migration add_attachment_to_work_collections attachment:string
+
+
+
+work_experience.rb
+  belongs_to :user
+work_experiences start_date:date end_date:date company:string
+rails generate model work_experience start_date:date end_date:date company:string user:references
